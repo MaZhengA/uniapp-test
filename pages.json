@@ -14,68 +14,27 @@
 	"pages": [
 		// pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/tabBar/component/component",
+			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "内置组件",
-				"app-plus": {
-					"bounce": "vertical",
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue534",
-							"fontSrc": "/static/uni.ttf",
-							"fontSize": "22px",
-							"color": "#FFFFFF"
-						}]
-					}
-				}
+				"navigationBarTitleText": "首页"
+      }
+		}, 
+    {
+			"path": "pages/cate/cate",
+			"style": {
+				"navigationBarTitleText": "分类"
+      }
+		},
+		{
+			"path": "pages/cart/cart",
+			"style": {
+				"navigationBarTitleText": "购物车"
 			}
 		},
 		{
-			"path": "pages/tabBar/API/API",
+			"path": "pages/my/my",
 			"style": {
-				"navigationBarTitleText": "接口",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue534",
-							"fontSrc": "/static/uni.ttf",
-							"fontSize": "22px",
-							"color": "#FFFFFF"
-						}]
-					}
-				}
-			}
-		},
-		{
-			"path": "pages/tabBar/template/template",
-			"style": {
-				"navigationBarTitleText": "模版",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue534",
-							"fontSrc": "/static/uni.ttf",
-							"fontSize": "22px",
-							"color": "#FFFFFF"
-						}]
-					}
-				}
-			}
-		},
-		{
-			"path": "pages/tabBar/extUI/extUI",
-			"style": {
-				"navigationBarTitleText": "扩展组件",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue534",
-							"fontSrc": "/static/uni.ttf",
-							"fontSize": "22px",
-							"color": "#FFFFFF"
-						}]
-					}
-				}
+				"navigationBarTitleText": "我的"
 			}
 		},
 		{
@@ -1324,10 +1283,10 @@
 	],
 	"globalStyle": {
 		"pageOrientation": "portrait",
-		"navigationBarTitleText": "Hello uniapp",
+		"navigationBarTitleText": "随心购",
 		"navigationBarTextStyle": "white",
-		"navigationBarBackgroundColor": "#007AFF",
-		"backgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#C00000",
+		"backgroundColor": "#fff",
 		"backgroundColorTop": "#F4F5F6",
 		"backgroundColorBottom": "#F4F5F6",
 		"mp-360": {
@@ -1345,28 +1304,29 @@
 		"selectedColor": "#007AFF",
 		"borderStyle": "black",
 		"backgroundColor": "#F8F8F8",
-		"list": [{
-				"pagePath": "pages/tabBar/component/component",
-				"iconPath": "static/component.png",
-				"selectedIconPath": "static/componentHL.png",
-				"text": "内置组件"
-			},
-			{
-				"pagePath": "pages/tabBar/API/API",
-				"iconPath": "static/api.png",
-				"selectedIconPath": "static/apiHL.png",
-				"text": "接口"
-			}, {
-				"pagePath": "pages/tabBar/extUI/extUI",
-				"iconPath": "static/extui.png",
-				"selectedIconPath": "static/extuiHL.png",
-				"text": "扩展组件"
-			}, {
-				"pagePath": "pages/tabBar/template/template",
-				"iconPath": "static/template.png",
-				"selectedIconPath": "static/templateHL.png",
-				"text": "模板"
-			}
+		"list": [
+      {
+      		"pagePath": "pages/home/home",
+      		"iconPath": "static/tab_icons/home.png",
+      		"selectedIconPath": "static/tab_icons/home-active.png",
+      		"text": "首页"
+      	},
+      	{
+      		"pagePath": "pages/cate/cate",
+      		"iconPath": "static/tab_icons/cate.png",
+      		"selectedIconPath": "static/tab_icons/cate-active.png",
+      		"text": "分类"
+      	}, {
+      		"pagePath": "pages/cart/cart",
+      		"iconPath": "static/tab_icons/cart.png",
+      		"selectedIconPath": "static/tab_icons/cart-active.png",
+      		"text": "购物车"
+      	}, {
+      		"pagePath": "pages/my/my",
+      		"iconPath": "static/tab_icons/my.png",
+      		"selectedIconPath": "static/tab_icons/my-active.png",
+      		"text": "我的"
+      	}
 		]
 	}
 }
