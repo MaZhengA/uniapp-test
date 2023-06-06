@@ -9,18 +9,20 @@
 	},
 	"repository": "https://github.com/dcloudio/hello-uniapp.git",
 	"keywords": [
-        "hello-uniapp",
-        "uni-app",
-        "uni-ui",
-        "示例工程"
-    ],
+		"hello-uniapp",
+		"uni-app",
+		"uni-ui",
+		"示例工程"
+	],
 	"author": "",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/dcloudio/hello-uniapp/issues"
 	},
 	"homepage": "https://github.com/dcloudio/hello-uniapp#readme",
-	"dependencies": {},
+	"dependencies": {
+		"@escook/request-miniprogram": "^0.2.1"
+	},
 	"dcloudext": {
 		"category": [
 			"前端页面模板",
@@ -81,15 +83,14 @@
 				"快应用": {
 					"华为": "u",
 					"联盟": "u"
-                },
-                "Vue": {
-                    "vue2": "y",
-                    "vue3": "y"
-                }
+				},
+				"Vue": {
+					"vue2": "y",
+					"vue3": "y"
+				}
 			}
 		}
 	},
-
 	"uni-app": {
 		"scripts": {
 			"mp-dingtalk": {

@@ -37,3 +37,33 @@ export function createApp() {
 	}
 }
 // #endif
+
+// #ifndef Request
+import {
+  $http
+} from '@escook/request-miniprogram';
+
+uni.$http = $http;
+
+// 请求根路径
+// 在小程序后台添加合法域名
+// https://mp.weixin.qq.com/wxamp/wadevelopcode/sandbox?lang=zh_CN&token=400273896
+$http.baseUrl = 'https://api-hmugo-web.itheima.net';
+
+$http.beforeRequest = function(options) {
+  uni.showLoading('数据加载中')
+}
+
+$http.afterRequest = function(options) {
+  uni.hideLoading('数据加载完成')
+}
+
+// 封装弹窗的方法
+uni.$showMsg = function (title = '数据请求时拜', duration = 1500) {
+  uni.showToast({
+    title,
+    duration,
+    icon: 'none'
+  })
+}
+// #endif
