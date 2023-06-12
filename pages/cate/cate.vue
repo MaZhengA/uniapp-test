@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- 使用自定义搜索组件 my-search -->
+    <my-search @click="gotoSearch"></my-search>
     <view class="scroll-view-container">
       <!-- 左侧滑动区域 -->
       <scroll-view 
@@ -47,7 +49,8 @@
     },
     onLoad() {
       const sysInfo = uni.getSystemInfoSync()
-      this.wh = sysInfo.windowHeight;
+      // 减去搜索区域的50像素，否则会有滚动 bug
+      this.wh = sysInfo.windowHeight - 50;
       this.getCateList()
     },
     methods: {
@@ -70,6 +73,12 @@
       gotoGoodsList (item) {
         uni.navigateTo({
           url: '/subpkg/goods_list/goods_list?cid=' + item.cat_id
+        })
+      },
+      // 跳转到搜索页面
+      gotoSearch() {
+        uni.navigateTo({
+          url:  '/subpkg/search/search'
         })
       }
     }
