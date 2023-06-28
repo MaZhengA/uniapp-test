@@ -1,7 +1,7 @@
 <template>
   <view class="goods-detail-container">
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
-      <swiper-item v-for="(item, index) in goods_info.pics" :key="i">
+      <swiper-item v-for="(item, index) in goods_info.pics" :key="index">
         <image :src="item.pics_big" @click="preview(i)"></image>
       </swiper-item>
     </swiper>
@@ -19,13 +19,19 @@
     <!-- 渲染 html 结构 -->
     <rich-text :nodes="goods_info.goods_introduce"></rich-text>
     <view class="goods_nav">
-      <uni-goods-nav :fill="true"  :options="options" :buttonGroup="buttonGroup"  @click="onClick" @buttonClick="buttonClick" />
+      <uni-goods-nav :fill="true" :options="options" :buttonGroup="buttonGroup"  @click="onClick" @buttonClick="buttonClick" />
     </view>
   </view>
 </template>
 
 <script>
+  import { mapState, mapMutations, mapGetters } from 'vuex'
+  
   export default {
+    computed: {
+      ...mapState('m_cart', []),
+      ...mapGetters('m_cart', ['total'])
+    },
     data() {
       return {
         goods_info: {},
@@ -38,7 +44,7 @@
           }, {
             icon: 'cart',
             text: '购物车',
-            info: 2
+            info: 0
           }
         ],
         buttonGroup: [
@@ -54,6 +60,25 @@
           }
         ]
       };
+    },
+    watch: {
+      // 调用 store 中 getters 的 tatal 方法
+      // 页面首次加载时不会调用此方法，可以写成第二种形式
+      // total(newVal) {
+      //   const findResult = this.options.find(item => item.text === '购物车');
+      //   if (findResult) {
+      //     findResult.info = newVal
+      //   }
+      // }
+      total: {
+        handler(newVal) {
+          const findResult = this.options.find(item => item.text === '购物车');
+          if (findResult) {
+            findResult.info = newVal
+          }
+        },
+        immediate: true
+      }
     },
     onLoad(options) {
       const goods_id = options.goods_id || '';
@@ -86,8 +111,21 @@
       },
       buttonClick (e) {
         console.log(e)
-        this.options[1].info++
-      }
+        if (e.content.text === '加入购物车') {
+          const goods = {
+            goods_id: this.goods_info.goods_id, 
+            goods_name: this.goods_info.goods_name, 
+            goods_price: this.goods_info.goods_price, 
+            goods_count: 1, 
+            goods_small_logo: this.goods_info.goods_small_logo, 
+            goods_state: true
+          }
+          
+          this.addToCart(goods)
+        }
+      },
+      // 引入 addToCart 方法
+      ...mapMutations('m_cart', ['addToCart'])
     }
   }
 </script>
