@@ -51,7 +51,15 @@ uni.$http = $http;
 $http.baseUrl = 'https://api-hmugo-web.itheima.net';
 
 $http.beforeRequest = function(options) {
-  uni.showLoading('数据加载中')
+  uni.showLoading('数据加载中');
+  
+  // 判断当前请求的接口是否需要权限
+  if (options.url.indexOf('/my') > -1) {
+    options.header = {
+      Authorization: store.state.m_user.token
+    }
+  }
+  
 }
 
 $http.afterRequest = function(options) {
@@ -59,7 +67,7 @@ $http.afterRequest = function(options) {
 }
 
 // 封装弹窗的方法
-uni.$showMsg = function (title = '数据请求时拜', duration = 1500) {
+uni.$showMsg = function (title = '数据请求失败', duration = 1500) {
   uni.showToast({
     title,
     duration,

@@ -18,7 +18,14 @@
             "delay" : 0
         },
         "modules" : {
-            "OAuth" : {},
+            "OAuth" : {
+                "weixin" : {
+                    //可选，JSON对象，使用微信登录SDK配置
+                    "appid" : "wxb719f25f08748db2", //必填，字符串类型，微信开放平台申请的appid
+                    "appsecret" : "78025b8e553c00c03e747410505e2b10", //必填，字符串类型，微信开放平台申请的appsecret
+                    "UniversalLinks" : "" //可选，字符串类型，微信开放平台配置的iOS平台通用链接
+                }
+            },
             "Payment" : {},
             "Push" : {},
             "Share" : {},
@@ -99,7 +106,7 @@
         "appid" : "wxb719f25f08748db2",
         "setting" : {
             "urlCheck" : true,
-            "checkSiteMap": false
+            "checkSiteMap" : false
         },
         "usingComponents" : true,
         "permission" : {
@@ -110,9 +117,7 @@
         "uniStatistics" : {
             "enable" : true
         },
-        "requiredPrivateInfos": [
-          "chooseAddress"
-        ]
+        "requiredPrivateInfos" : [ "chooseAddress" ]
     },
     "mp-alipay" : {
         "usingComponents" : true,
